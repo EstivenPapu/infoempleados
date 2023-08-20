@@ -1,0 +1,96 @@
+
+
+
+<ng-template #modalAgregar let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Agregar Empleado</h5>
+    <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- Formulario de agregar empleado -->
+    <form (ngSubmit)="agregarEmpleado()" #addForm="ngForm" class="agregarempleado">
+      <label for="ID">id</label>
+      <input type="number" id="ID" name="ID" [(ngModel)]="nuevoEmpleado.id" required>
+      <div *ngIf="idExistente()" class="error">El ID ya existe</div>
+  
+      <label for="nuevoNombre">Nombre</label>
+      <input type="text" id="nuevoNombre" name="nuevoNombre" [(ngModel)]="nuevoEmpleado.nombre" required>
+  
+      <label for="nuevoApellido">Apellido</label>
+      <input type="text" id="nuevoApellido" name="nuevoApellido" [(ngModel)]="nuevoEmpleado.apellido" required>
+  
+      <label for="nuevoPuesto">Cargo</label>
+      <input type="text" id="nuevoPuesto" name="nuevoPuesto" [(ngModel)]="nuevoEmpleado.puesto" required>
+  
+      <button type="submit" [disabled]="!addForm.form.valid || idExistente()">Agregar Empleado</button>
+  </form>
+  </div>
+</ng-template>
+ 
+<h2>Lista de empleados</h2>
+<ul class="empleados-lista">
+    <li *ngFor="let empleado of empleados" class="emple">
+     
+      <div class="ver">
+        <p>{{ empleado.nombre }} {{ empleado.apellido }}</p> 
+        <div class="btnbox">
+          <button (click)="verDetalle(empleado)" class="btn">Ver</button>
+          <button (click)="editarEmpleado(empleado)" class="btn">Editar</button>
+          <button (click)="eliminarEmpleado(empleado)" class="btn">Eliminar</button></div>
+        
+      </div>
+      
+    </li>
+   
+</ul>
+<button class="btn btn-success" (click)="abrirModalAgregar()">Agregar Empleado</button>
+<br>
+
+
+<br>
+<ng-template #modalVer let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Detalles del Empleado</h5>
+    <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-detalle-empleado [empleado]="empleadoSeleccionado"></app-detalle-empleado>
+  </div>
+</ng-template>
+
+<br>
+ 
+  
+    <ng-template #modalEditar let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Empleado</h5>
+        <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Formulario de editar empleado -->
+        <div  *ngIf="modoEdicion && empleadoSeleccionado" class="modal-body">
+          <!-- Formulario de editar empleado -->
+            
+            <form (ngSubmit)="guardarEdicion()" #editForm="ngForm" class="editarempleado">
+              <label for="nombre">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" [(ngModel)]="empleadoSeleccionado.nombre" required>
+          
+              <label for="apellido">Apellido:</label>
+              <input type="text" id="apellido" name="apellido" [(ngModel)]="empleadoSeleccionado.apellido" required>
+          
+              <label for="puesto">Puesto:</label>
+              <input type="text" id="puesto" name="puesto" [(ngModel)]="empleadoSeleccionado.puesto" required>
+          
+               
+            </form>
+          
+        </div>
+      </div>
+    </ng-template>
+ 

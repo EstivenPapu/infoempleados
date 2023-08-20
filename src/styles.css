@@ -1,0 +1,64 @@
+h1 {
+    padding: 10px;
+    background-color: rgb(52, 52, 201);
+    color: white;
+    text-align: center;
+}
+
+.containerpadre {
+    border: 1px solid black;
+    width: 70%;
+    height: 70%;
+    padding: 20px;
+    margin: auto;
+    background-color: rgb(48, 103, 165);
+}  
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.agregarempleado, .editarempleado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.agregarempleado input, .editarempleado input {
+    margin-bottom: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(198, 200, 202);
+}
+.agregarempleado input:hover, .editarempleado input:hover {
+    background-color: rgb(48, 103, 165);
+}
+.agregarempleado button, .editarempleado button {
+    padding: 10px;
+    border-radius: 8px;
+}
+.agregarempleado button:hover, .editarempleado button:hover {
+    background-color: rgb(21, 46, 73);
+}
+button {
+    border: none; 
+}
+.btn-success {
+    margin-top: 40px;
+}
+.btnbox {
+    background-color: antiquewhite;
+    border-radius: 10px;
+    margin-left: 20px;
+
+}
+h2 {
+    padding: 25px;
+}
+.ver {
+    display: flex;
+   margin-top: 15px;
+}
